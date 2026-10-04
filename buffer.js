@@ -155,7 +155,7 @@ const server = net.createServer((socket) => {
                             if (req.headers['transfer-encoding'] === 'chunked') {
                                 // logic of "transfer-encoding: chunked"
                             } else {
-                                console.log('مكسل الصراحة اعمل بارس ل اي هيدر فاليو تاني غير ال chunked')
+                                console.log('later')
                             }
                         }
                     } else if (Object.hasOwn(req.headers, 'content-length')) {
@@ -178,7 +178,7 @@ const server = net.createServer((socket) => {
                                 expectedPayloadLength = 0
                                 payloadArr = []
                             } else if (expectedPayloadLength > 0) {
-                                // بسم الله
+                                
                                 header = undefined // point of changing control flow to the "payload assembling" state
                                 if (expectedPayloadLength >= unknownEntity.length) {
                                     payloadArr.push(unknownEntity)
@@ -222,7 +222,7 @@ const server = net.createServer((socket) => {
                         payloadArr = [];
                         expectedPayloadLength = 0
                     }
-                    // fuck computer science :)
+                    
                 } else {
                     // logic of Payload Assembling , need to understand that TCP Protocol is a "blind" protocol that does not see the boundries of HTTP Requests , so that we shall find that the first byte of the later request (first byte of the method) will be directly after the last byte of the payload , and since the presence of Fragmentation , this Adhesion will be in the same TCP Segment , so we need a counter that "jumps" across the chunk objects that exist in the "chunksArr" array
                     if (req.headers['content-length'] > 0) {
@@ -253,7 +253,7 @@ const server = net.createServer((socket) => {
                             payloadArr = []
                         }
                     } else if (Object.hasOwn(req.headers , 'transfer-encoding')) {
-                        // fuck this goddamn task , I've done shitting with this fuck for 5 months
+                        
                     } else {
                         socket.destroy();
                         return;
